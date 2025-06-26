@@ -38,18 +38,16 @@ const PhoneSimulator = () => {
   };
 
   return (
-    <div className="mx-auto max-w-sm">
-      <div className="bg-black rounded-3xl p-2 shadow-2xl">
-        <div className="bg-gray-900 rounded-2xl overflow-hidden h-[600px] relative">
-          {/* Screen Content */}
-          <div className="h-full transition-all duration-300">
-            {renderScreen()}
-          </div>
+    <div className="w-full h-screen">
+      <div className="w-full h-full bg-gray-900 relative">
+        {/* Screen Content */}
+        <div className="h-full transition-all duration-300">
+          {renderScreen()}
+        </div>
 
-          {/* Home Indicator */}
-          <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2">
-            <div className="w-32 h-1 bg-white/30 rounded-full"></div>
-          </div>
+        {/* Home Indicator */}
+        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2">
+          <div className="w-32 h-1 bg-white/30 rounded-full"></div>
         </div>
       </div>
     </div>
