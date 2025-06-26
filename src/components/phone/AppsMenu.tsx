@@ -3,18 +3,25 @@ import { Button } from "@/components/ui/button";
 
 interface AppsMenuProps {
   onBack: () => void;
+  onOpenDomApp: () => void;
 }
 
-const AppsMenu = ({ onBack }: AppsMenuProps) => {
+const AppsMenu = ({ onBack, onOpenDomApp }: AppsMenuProps) => {
   const apps = [
-    { name: "Камера", icon: "📷", color: "bg-gray-700" },
-    { name: "Галерея", icon: "🖼️", color: "bg-yellow-600" },
-    { name: "Календарь", icon: "📅", color: "bg-red-600" },
-    { name: "Заметки", icon: "📝", color: "bg-orange-600" },
-    { name: "Погода", icon: "🌤️", color: "bg-blue-500" },
-    { name: "Карты", icon: "🗺️", color: "bg-green-600" },
-    { name: "Музыка", icon: "🎵", color: "bg-pink-600" },
-    { name: "Видео", icon: "🎬", color: "bg-purple-600" },
+    { name: "Камера", icon: "📷", color: "bg-gray-700", action: () => {} },
+    { name: "Галерея", icon: "🖼️", color: "bg-yellow-600", action: () => {} },
+    { name: "Календарь", icon: "📅", color: "bg-red-600", action: () => {} },
+    { name: "Заметки", icon: "📝", color: "bg-orange-600", action: () => {} },
+    { name: "Погода", icon: "🌤️", color: "bg-blue-500", action: () => {} },
+    { name: "Карты", icon: "🗺️", color: "bg-green-600", action: () => {} },
+    { name: "Музыка", icon: "🎵", color: "bg-pink-600", action: () => {} },
+    { name: "Видео", icon: "🎬", color: "bg-purple-600", action: () => {} },
+    {
+      name: "DomApp",
+      icon: "📱",
+      color: "bg-gradient-to-br from-blue-500 to-purple-600",
+      action: onOpenDomApp,
+    },
   ];
 
   return (
@@ -39,6 +46,7 @@ const AppsMenu = ({ onBack }: AppsMenuProps) => {
             <Button
               key={index}
               variant="ghost"
+              onClick={app.action}
               className="flex flex-col items-center p-4 hover:bg-gray-800"
             >
               <div

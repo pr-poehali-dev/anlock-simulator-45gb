@@ -4,8 +4,9 @@ import Desktop from "./Desktop";
 import AppsMenu from "./AppsMenu";
 import Settings from "./Settings";
 import AboutPhone from "./AboutPhone";
+import DomAppStore from "./DomAppStore";
 
-type Screen = "loading" | "desktop" | "apps" | "settings" | "about";
+type Screen = "loading" | "desktop" | "apps" | "settings" | "about" | "domapp";
 
 const PhoneSimulator = () => {
   const [currentScreen, setCurrentScreen] = useState<Screen>("loading");
@@ -22,7 +23,12 @@ const PhoneSimulator = () => {
           />
         );
       case "apps":
-        return <AppsMenu onBack={() => setCurrentScreen("desktop")} />;
+        return (
+          <AppsMenu
+            onBack={() => setCurrentScreen("desktop")}
+            onOpenDomApp={() => setCurrentScreen("domapp")}
+          />
+        );
       case "settings":
         return (
           <Settings
@@ -32,6 +38,8 @@ const PhoneSimulator = () => {
         );
       case "about":
         return <AboutPhone onBack={() => setCurrentScreen("settings")} />;
+      case "domapp":
+        return <DomAppStore onBack={() => setCurrentScreen("apps")} />;
       default:
         return <LoadingScreen onComplete={() => setCurrentScreen("desktop")} />;
     }
